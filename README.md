@@ -1,5 +1,10 @@
 # README
 
+
+![изображение](./inf/update.gif)
+
+
+
 ## About
 
 This is the official Wails Vanilla template.

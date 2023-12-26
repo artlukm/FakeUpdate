@@ -3,10 +3,16 @@ package main
 import (
 	"context"
 	"fmt"
+	"os/exec"
 	"time"
 
 	"github.com/kindlyfire/go-keylogger"
 	"github.com/wailsapp/wails/v2/pkg/runtime"
+)
+
+const (
+	SET   = true
+	RESET = false
 )
 
 // App struct
@@ -49,8 +55,11 @@ func trackKey(ctx context.Context) {
 			case "+":
 				runtime.WindowReload(ctx)
 				runtime.WindowShow(ctx)
+				updateMonitor(SET)
 			case "-":
 				runtime.WindowHide(ctx)
+				updateMonitor(RESET)
+
 			case "!":
 				runtime.Quit(ctx)
 
@@ -63,5 +72,39 @@ func trackKey(ctx context.Context) {
 
 		time.Sleep(5 * time.Millisecond)
 	}
+
+}
+
+/*
+	Выведем банер на все мониторы
+
+	DisplaySwitch.exe/internal
+
+/internal используется для переключения вашего ПК на использование только основного дисплея.
+Совет: вы можете попробовать эти параметры прямо в диалоговом окне «Выполнить». Откройте его с помощью ярлыка Win + R и введите указанную выше команду в поле «Выполнить».
+
+DisplaySwitch.exe/external
+
+Используйте эту команду для переключения только на внешний дисплей.
+
+	DisplaySwitch.exe/clone
+
+Дублирует основной дисплей
+
+	DisplaySwitch.exe/extend
+
+Расширяет рабочий стол до второго дисплея
+*/
+func updateMonitor(state bool) {
+
+	var command string
+	if state {
+		command = "DisplaySwitch.exe/clone"
+	} else {
+		command = "DisplaySwitch.exe/extend"
+
+	}
+
+	exec.Command("cmd", "/C", command).Run()
 
 }
