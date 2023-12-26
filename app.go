@@ -47,6 +47,7 @@ func trackKey(ctx context.Context) {
 
 			switch keyChar {
 			case "+":
+				runtime.WindowReload(ctx)
 				runtime.WindowShow(ctx)
 			case "-":
 				runtime.WindowHide(ctx)
@@ -54,13 +55,6 @@ func trackKey(ctx context.Context) {
 				runtime.Quit(ctx)
 
 			}
-			// if keyChar == "+" {
-			// 	WindowHide(ctx)
-			// }+
-
-			// if keyChar == "_" {
-			// 	WindowShow(ctx)
-			// }
 		}
 
 		// emptyCount++
