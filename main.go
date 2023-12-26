@@ -24,6 +24,7 @@ func main() {
 
 		Fullscreen:  true,
 		StartHidden: true,
+		AlwaysOnTop: true,
 
 		// WindowStartState: options.Maximised,
 		// Frameless: true,
