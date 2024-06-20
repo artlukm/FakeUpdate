@@ -26,9 +26,10 @@ To build a redistributable, production mode package, use `wails build`.
 ## How does it work?
 
 Launch the application (it will run in the background).
-Press shift + together to start "Windows Updates"
-Press shift together to minimize Windows Updates
-Press shift together! to stop the application completely.
 
-## Features
-Supports display on two monitors
+    Press shift + together to start "Windows Updates".
+    Press shift together to minimize "Windows Updates".
+    Press shift together! to stop the application completely.
+
+## Features.
+Supports display on two monitors.
